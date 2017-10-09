@@ -1,1 +1,24 @@
 # empty for now
+docker-recommended-extra-packages:
+    cmd.run:
+        - name: |
+            sudo apt-get -y install linux-image-extra-$(uname -r) linux-image-extra-virtual
+
+docker-gpg-key:
+    cmd.run:
+        - name: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+docker-repository:
+    cmd.run:
+        - name: sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        - require:
+            - docker-gpg-key
+
+docker-packages:
+    pkg.installed:
+        - pkgs: 
+            - docker-ce
+            - docker-compose
+        - require:
+            - docker-repository
+
