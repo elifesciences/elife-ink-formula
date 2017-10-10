@@ -12,9 +12,20 @@ ink-repository:
         - name: /srv/ink
         - user: {{ pillar.elife.deploy_user.username }}
         - group: {{ pillar.elife.deploy_user.username }}
-        - recurse:
-            - user
-            - group
+        # subfolders such as postgres/ or tmp/ require special permissions
+        # don't mess with them
+        #- recurse:
+        #    - user
+        #    - group
         - require:
             - git: ink-repository
 
+ink-environment:
+    file.managed:
+        - name: /srv/ink/.env
+        - source: salt://elife-ink/config/srv-ink-.env
+        - template: jinja
+        - user: {{ pillar.elife.deploy_user.username }}
+        - group: {{ pillar.elife.deploy_user.username }}
+        - require:
+            - ink-repository
