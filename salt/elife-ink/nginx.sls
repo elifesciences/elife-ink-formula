@@ -5,7 +5,7 @@ ink-nginx-configuration:
         - template: jinja
         - require:
             - nginx-config
-            - ink-environment
+            - ink-docker-containers
         - listen_in:
             - service: nginx-server-service
 
@@ -16,7 +16,7 @@ slanger-nginx-configuration:
         - template: jinja
         - require:
             - nginx-config
-            - ink-environment
+            - ink-docker-containers
         - listen_in:
             - service: nginx-server-service
 

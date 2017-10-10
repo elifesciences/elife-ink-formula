@@ -29,3 +29,12 @@ ink-environment:
         - group: {{ pillar.elife.deploy_user.username }}
         - require:
             - ink-repository
+
+# the smallest orchestrator in the world
+ink-docker-containers:
+    cmd.run:
+        - name: docker-compose up --force-recreate -d
+        - cwd: /srv/ink
+        - require:
+            - ink-environment
+
