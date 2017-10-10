@@ -3,3 +3,4 @@ base:
         - elife
         - elife-ink.docker
         - elife-ink
+        - elife-ink.nginx
