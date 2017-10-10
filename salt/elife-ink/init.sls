@@ -1,7 +1,7 @@
 ink-repository:
     git.latest:
         - name: https://gitlab.coko.foundation/yld/ink-api
-        - rev: master
+        - rev: demo
         #- identity: {{ pillar.elife.projects_builder.key or '' }}
         - force_fetch: True
         - force_checkout: True
