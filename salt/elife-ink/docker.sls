@@ -18,6 +18,7 @@ docker-packages:
     pkg.installed:
         - pkgs: 
             - docker-ce
+        - refresh: True
         - require:
             - docker-repository
 
