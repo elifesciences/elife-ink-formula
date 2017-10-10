@@ -33,7 +33,7 @@ ink-environment:
 # the smallest orchestrator in the world
 ink-docker-containers:
     cmd.run:
-        - name: docker-compose up --force-recreate -d
+        - name: /usr/local/bin/docker-compose up --force-recreate -d
         - cwd: /srv/ink
         - require:
             - ink-environment
