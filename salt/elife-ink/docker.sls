@@ -1,8 +1,8 @@
-# empty for now
-docker-recommended-extra-packages:
-    cmd.run:
-        - name: |
-            sudo apt-get -y install linux-image-extra-$(uname -r) linux-image-extra-virtual
+# fails on AWS, perhaps due to the package name
+#docker-recommended-extra-packages:
+#    cmd.run:
+#        - name: |
+#            sudo apt-get -y install linux-image-extra-$(uname -r) linux-image-extra-virtual
 
 docker-gpg-key:
     cmd.run:
