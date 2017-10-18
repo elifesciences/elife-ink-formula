@@ -1,3 +1,24 @@
+elife-ink-repository:
+    builder.git_latest:
+        - name: git@github.com:elifesciences/elife-ink.git
+        - identity: {{ pillar.elife.projects_builder.key or '' }}
+        - rev: {{ salt['elife.rev']() }}
+        - branch: {{ salt['elife.branch']() }}
+        - target: /srv/elife-ink
+        - force_fetch: True
+        - force_checkout: True
+        - force_reset: True
+
+    file.directory:
+        - name: /srv/elife-ink
+        - user: {{ pillar.elife.deploy_user.username }}
+        - group: {{ pillar.elife.deploy_user.username }}
+        - recurse:
+            - user
+            - group
+        - require:
+            - git: elife-ink-repository
+
 ink-repository:
     git.latest:
         - name: https://gitlab.coko.foundation/yld/ink-api
@@ -7,6 +28,8 @@ ink-repository:
         - force_checkout: True
         - force_reset: True
         - target: /srv/ink
+        - require:
+            - elife-ink-repository
 
     file.directory:
         - name: /srv/ink
@@ -19,6 +42,7 @@ ink-repository:
         #    - group
         - require:
             - git: ink-repository
+
 
 ink-environment:
     file.managed:
