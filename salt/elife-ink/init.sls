@@ -17,7 +17,7 @@ elife-ink-repository:
             - user
             - group
         - require:
-            - git: elife-ink-repository
+            - builder: elife-ink-repository
 
 ink-repository:
     git.latest:
