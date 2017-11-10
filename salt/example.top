@@ -2,6 +2,6 @@ base:
     '*':
         - elife
         - elife.nginx
-        - elife-ink.docker
+        - elife.docker
         - elife-ink
         - elife-ink.nginx
